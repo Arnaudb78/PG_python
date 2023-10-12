@@ -10,7 +10,7 @@ from pathlib import Path
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.setFixedSize(QSize(800,150))
+        self.setFixedSize(QSize(300,150))
 
         central_widget = QWidget()
         self.setCentralWidget(central_widget)
