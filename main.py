@@ -6,7 +6,6 @@ from PySide6.QtWidgets import *
 from PySide6.QtGui import *
 
 import random
-import string
 
 from pathlib import Path 
 
@@ -15,7 +14,7 @@ import dialogs
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.setFixedSize(QSize(300,150))
+        self.setFixedSize(QSize(300,170))
 
         central_widget = QWidget()
         self.setCentralWidget(central_widget)
@@ -74,6 +73,10 @@ class MainWindow(QMainWindow):
 
         btn_generate.clicked.connect(self.generate)
 
+        #status bar
+        self.setStatusBar(QStatusBar(self))
+        self.status = self.statusBar()
+
     #Action btn
     def quit(self):
         if dialogs.confirm(self):
@@ -82,6 +85,7 @@ class MainWindow(QMainWindow):
     def copy(self):
         clipboard = QApplication.clipboard()
         clipboard.setText(self.password_generated.text())
+        self.status.showMessage("Mot de passe copié", 1000)
 
         #recupère la valeur => affiche
     def change_size(self):
